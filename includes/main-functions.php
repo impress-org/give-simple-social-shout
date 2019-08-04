@@ -32,7 +32,7 @@ function sss4givewp_output_sharing_above() {
     //var_dump($settings);
 
     if ( $settings['position']=='above' ) {
-        include SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php';
+        include apply_filters( 'sss4givewp_template', SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php');
     }
 }
 
@@ -43,6 +43,6 @@ function sss4givewp_output_sharing_below() {
     //var_dump($settings);
 
     if ( $settings['position']=='below' ) {
-        include SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php';
+        include apply_filters( 'sss4givewp_template', SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php');
     }
 }

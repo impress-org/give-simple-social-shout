@@ -74,3 +74,4 @@ Launched version 1 with the following features:
 
 == Upgrade Notice ==
 
+First release!
