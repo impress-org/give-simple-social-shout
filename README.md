@@ -38,7 +38,8 @@ I'm keeping this really simple and not planning to do major updates, but I'll ma
 </details>
 
 ## Changelog
-**2019-08 -- Version 1.0**
+### **2019-08 -- Version 1.0**
+
 Launched version 1 with the following features:
 * Settings page that includes:
     * Title
