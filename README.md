@@ -24,11 +24,13 @@ That's all you need to get up and running with this simple GiveWP add-on and sta
 
 Of course you can use CSS, but if you want more complex customization of the appearance you can use this filter to point to your own template file.
 
-`add_filter('sss4givewp_template', 'my_sss4givewp_template');
+```
+add_filter('sss4givewp_template', 'my_sss4givewp_template');
 
 function my_sss4givewp_template() {
     return MY_PATH . '/my-template-file.php';
-}`
+}
+```
 </details>
 <details><summary>I want to add X social platform; will you add it?</summary>
 
