@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Simple Social Shout for GiveWP
- * Plugin URI:  https://github.com/mathetos/simple-social-share-for-givewp
+ * Plugin URI:  https://github.com/impress-org/give-simple-social-shout
  * Description: A demo Addon to how easy it can be to create your own GiveWP Add-on. This add-on adds simple social sharing buttons above your Donation Confirmation table to allow donors to tweet or post their donation to social media.
  * Version:     1.0
  * Author:      Matt Cromwell

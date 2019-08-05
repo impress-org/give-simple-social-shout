@@ -28,6 +28,7 @@ function sss4givewp_template_args($args) {
 function sss4givewp_output_sharing_above() {
 
     $settings = sss4givewp_template_args($args = array())['settings'];
+    $meta = sss4givewp_template_args($args = array());
 
     //var_dump($settings);
 
@@ -39,6 +40,7 @@ function sss4givewp_output_sharing_above() {
 function sss4givewp_output_sharing_below() {
 
     $settings = sss4givewp_template_args($args = array())['settings'];
+    $meta = sss4givewp_template_args($args = array());
 
     //var_dump($settings);
 
