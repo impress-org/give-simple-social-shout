@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simple Social Shout for GiveWP
  * Plugin URI:  https://github.com/impress-org/give-simple-social-shout
- * Description: A demo Addon to how easy it can be to create your own GiveWP Add-on. This add-on adds simple social sharing buttons above your Donation Confirmation table to allow donors to tweet or post their donation to social media.
+ * Description: Add simple sharing options to your GiveWP Donation Receipt page.
  * Version:     1.0
  * Author:      Matt Cromwell
  * Author URI:  https://www.mattcromwell.com
@@ -19,16 +19,6 @@
  * http://www.socicon.com
  */
 
-
-/**
- * Our Globals for easy Reference.
- * You'll want to make sure you replace "SIMPLE_SOCIAL_SHARE_4_GIVEWP"
- * with your own prefix throughout this whole plugin.
- *
- * Functions are prefixed with "sss4givewp_" and should be replaced as well.
- *
- * The text domain is sss-4-givewp and should be replaced as well.
- */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -87,7 +77,8 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 		register_activation_hook( SIMPLE_SOCIAL_SHARE_4_GIVEWP_FILE, array( $this, 'install' ) );
 		add_action( 'give_init', array( $this, 'init' ), 10, 1 );
-		add_action( 'plugins_loaded', array( $this, 'check_environment' ), 999 );
+		add_action( 'admin_init', array( $this, 'check_environment' ), 999 );
+		add_action( 'admin_notices', array( $this, 'admin_notices' ), 15 );
 		add_action( 'wp_enqueue_scripts', array($this, 'load_styles') );
 		add_filter( 'give-settings_get_settings_pages', array( $this, 'register_setting_page' ) );
 	}
@@ -110,7 +101,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 		// Set it to latest.
 		if ( ! defined( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION' ) ) {
-			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION', '2.5.0' );
+			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION', '2.5' );
 		}
 
 		if ( ! defined( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_FILE' ) ) {
@@ -130,6 +121,12 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 		}
 	}
 
+	/**
+	 * Notices (array)
+	 *
+	 * @var array
+	 */
+	public $notices = array();
 
 	/**
 	 * Plugin installation
@@ -155,7 +152,11 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 *
 	 */
 	public function init( $give ) {
-		if ( ! self::$instance->check_environment() ) {
+
+		load_plugin_textdomain( 'sss-4-givewp', false, dirname( SIMPLE_SOCIAL_SHARE_4_GIVEWP_BASENAME ) . '/languages' );
+		
+		// Don't hook anything else in the plugin if we're in an incompatible environment.
+		if ( ! $this->get_environment_warning() ) {
 			return;
 		}
 
@@ -164,80 +165,102 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 
 	/**
-	 * Check plugin environment
+	 * Check plugin environment.
 	 *
-	 * @return bool|null
-	 * @since
+	 * @since  2.1.1
 	 * @access public
 	 *
+	 * @return bool
 	 */
 	public function check_environment() {
-		// Bailout.
-		if ( ! is_admin() || ! current_user_can( 'activate_plugins' ) ) {
-			return null;
-		}
-
+		// Flag to check whether plugin file is loaded or not.
+		$is_working = true;
 		// Load plugin helper functions.
-		if ( ! function_exists( 'deactivate_plugins' ) || ! function_exists( 'is_plugin_active' ) ) {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		}
 
-		// Load helper functions.
-		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/misc-functions.php';
+		/* Check to see if GiveWP is activated, if it isn't deactivate and show a banner. */
+		
+		$is_give_active = defined( 'GIVE_PLUGIN_BASENAME' ) ? is_plugin_active( GIVE_PLUGIN_BASENAME ) : false;
 
-        // Load main functions.
-        require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/main-functions.php';
-
-		// Flag to check whether deactivate plugin or not.
-		$is_deactivate_plugin = false;
-
-		// Verify dependency cases.
-		switch ( true ) {
-			case doing_action( 'give_init' ):
-				if (
-					defined( 'GIVE_VERSION' ) &&
-					version_compare( GIVE_VERSION, SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION, '<' )
-				) {
-					/* Min. Give. plugin version. */
-
-					// Show admin notice.
-					add_action( 'admin_notices', '__SIMPLE_SOCIAL_SHARE_4_GIVEWP_dependency_notice' );
-
-					$is_deactivate_plugin = true;
-				}
-
-				break;
-
-			case doing_action( 'activate_' . SIMPLE_SOCIAL_SHARE_4_GIVEWP_BASENAME ):
-			case doing_action( 'plugins_loaded' ) && ! did_action( 'give_init' ):
-				/* Check to see if Give is activated, if it isn't deactivate and show a banner. */
-
-				// Check for if give plugin activate or not.
-				$is_give_active = defined( 'GIVE_PLUGIN_BASENAME' ) ? is_plugin_active( GIVE_PLUGIN_BASENAME ) : false;
-
-				if ( ! $is_give_active ) {
-					add_action( 'admin_notices', '__SIMPLE_SOCIAL_SHARE_4_GIVEWP_inactive_notice' );
-
-					$is_deactivate_plugin = true;
-				}
-
-				break;
-		}
-
-		// Don't let this plugin activate.
-		if ( $is_deactivate_plugin ) {
+		if ( empty( $is_give_active ) ) {
+			// Show admin notice.
+			$this->add_admin_notice( 'prompt_give_activate', 'error', sprintf( __( '<strong>Activation Error:</strong> You must have the <a href="%s" target="_blank">GiveWP</a> plugin installed and activated for Simple Social Share for GiveWP to activate.', 'sss-4-givewp' ), 'https://givewp.com' ) );
 
 			// Deactivate plugin.
 			deactivate_plugins( SIMPLE_SOCIAL_SHARE_4_GIVEWP_BASENAME );
-
 			if ( isset( $_GET['activate'] ) ) {
 				unset( $_GET['activate'] );
 			}
 
-			return false;
+			$is_working = false;
 		}
+		return $is_working;
+	}
 
-		return true;
+	/**
+	 * Check plugin for Give environment.
+	 *
+	 * @since  2.1.1
+	 * @access public
+	 *
+	 * @return bool
+	 */
+	public function get_environment_warning() {
+		// Flag to check whether plugin file is loaded or not.
+		$is_working = true;
+		// Verify dependency cases.
+		if (
+			defined( 'GIVE_VERSION' )
+			&& version_compare( GIVE_VERSION, SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION, '<' )
+		) {
+			/* Min. Give. plugin version. */
+			// Show admin notice.
+			$this->add_admin_notice( 'prompt_give_incompatible', 'error', sprintf( __( '<strong>Activation Error:</strong> You must have the <a href="%s" target="_blank">GiveWP</a> core version %s for the Simple Social Share for GiveWP add-on to activate.', 'sss-4-givewp' ), 'https://givewp.com', SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION ) );
+			$is_working = false;
+		}
+		
+		return $is_working;
+	}
+
+	/**
+	 * Allow this class and other classes to add notices.
+	 *
+	 * @param string $slug Notice Slug.
+	 * @param string $class Notice Class.
+	 * @param string $message Notice Message.
+	 */
+	public function add_admin_notice( $slug, $class, $message ) {
+		$this->notices[ $slug ] = array(
+			'class'   => $class,
+			'message' => $message,
+		);
+	}
+
+	/**
+	 * Display admin notices.
+	 */
+	public function admin_notices() {
+		$allowed_tags = array(
+			'a'      => array(
+				'href'  => array(),
+				'title' => array(),
+				'class' => array(),
+				'id'    => array(),
+			),
+			'br'     => array(),
+			'em'     => array(),
+			'span'   => array(
+				'class' => array(),
+			),
+			'strong' => array(),
+		);
+		foreach ( (array) $this->notices as $notice_key => $notice ) {
+			echo "<div class='" . esc_attr( $notice['class'] ) . "'><p>";
+			echo wp_kses( $notice['message'], $allowed_tags );
+			echo '</p></div>';
+		}
 	}
 
 	/**

@@ -22,7 +22,7 @@ function sss4givewp_template_args($args) {
 
     return $args;
 
-    //var_dump($settings['position']);
+    var_dump($settings['position']);
 }
 
 function sss4givewp_output_sharing_above() {
