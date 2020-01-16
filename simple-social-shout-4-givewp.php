@@ -139,6 +139,8 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 		if ( ! self::$instance->check_environment() ) {
 			return;
 		}
+
+		$this->store_default_settings();
 	}
 
 	/**
@@ -154,7 +156,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	public function init( $give ) {
 
 		load_plugin_textdomain( 'sss-4-givewp', false, dirname( SIMPLE_SOCIAL_SHARE_4_GIVEWP_BASENAME ) . '/languages' );
-		
+
 		// Don't hook anything else in the plugin if we're in an incompatible environment.
 		if ( ! $this->get_environment_warning() ) {
 			return;
@@ -181,7 +183,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 		}
 
 		/* Check to see if GiveWP is activated, if it isn't deactivate and show a banner. */
-		
+
 		$is_give_active = defined( 'GIVE_PLUGIN_BASENAME' ) ? is_plugin_active( GIVE_PLUGIN_BASENAME ) : false;
 
 		if ( empty( $is_give_active ) ) {
@@ -220,7 +222,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 			$this->add_admin_notice( 'prompt_give_incompatible', 'error', sprintf( __( '<strong>Activation Error:</strong> You must have the <a href="%s" target="_blank">GiveWP</a> core version %s for the Simple Social Share for GiveWP add-on to activate.', 'sss-4-givewp' ), 'https://givewp.com', SIMPLE_SOCIAL_SHARE_4_GIVEWP_MIN_GIVE_VERSION ) );
 			$is_working = false;
 		}
-		
+
 		return $is_working;
 	}
 
@@ -299,6 +301,31 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	public function load_styles() {
         wp_enqueue_style( 'sss4givewp', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-frontend.css', array(), SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION, 'all' );
         wp_enqueue_style( 'sss4givewp-socicon', 'https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh', array(), '1.0', 'all' );
+	}
+
+
+	/**
+	 * Store default setting
+	 *
+	 * @since 1.0
+	 * @access private
+	 */
+	private function store_default_settings(){
+		if( ! function_exists('sss4givewp_get_default_setting') ) {
+			require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/main-functions.php';
+		}
+
+		$give_setting = give_get_settings();
+		$has_setting  = array_key_exists( 'sss4give_title', $give_setting );
+
+		// Exit. It is not a fresh install
+		if( $has_setting ) {
+			return;
+		}
+
+		$give_setting = array_merge( $give_setting, sss4givewp_get_default_setting() );
+
+		update_option( 'give_settings', $give_setting );
 	}
 }
 
