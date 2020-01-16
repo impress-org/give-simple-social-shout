@@ -4,6 +4,10 @@
  */
 
  $message = apply_filters('sss4givewp_message', sprintf(__('Help me support &quot;%1$s&quot; and donate to &quot;%2$s&quot;', 'sss4givewp'),$meta['org'], $meta['form_title']));
+
+ $status = $meta['share_status'][0];
+
+ if ( $status !== 'disabled') :
 ?>
 
 <div id="sss4givewp">
@@ -25,3 +29,5 @@
     <a class="socicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode($meta['referral']); ?>&title=<?php echo $message; ?>'&source=<?php echo $meta['org']; ?>" target="blank"></a>
     <?php endif; ?>
 </div>
+
+<?php endif;

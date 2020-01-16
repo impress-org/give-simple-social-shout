@@ -7,7 +7,12 @@ function sss4givewp_template_args($args) {
 
     global $give_receipt_args, $donation;
 
+    
     $args['ID']     = $donation->ID;
+    $args['form_id'] = get_post_meta( $args['ID'], '_give_payment_form_id', true );
+    $args['form_meta'] = get_post_meta( $args['form_id'] );
+    $args['share_status'] = $args['form_meta']['sss4givewp-fields_status'];
+    $args['enabled'] = give_get_meta( $args['ID'], 'sss4givewp-fields_status' );
     $args['referral']         = give_get_payment_meta( $args['ID'], '_give_current_url', true );
     $args['form_title']  = give_get_meta( $args['ID'], '_give_payment_form_title', true );
     $args['org'] = get_bloginfo('name');

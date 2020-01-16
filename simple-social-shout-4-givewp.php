@@ -286,6 +286,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 */
 	private function load_files() {
 		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/main-functions.php';
+		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/admin/form-settings.php';
 	}
 
 
@@ -296,7 +297,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 * @access private
 	 */
 	public function load_styles() {
-        wp_enqueue_style( 'sss4givewp', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-frontend.css', array(), mt_rand(9,9999), 'all' );
+        wp_enqueue_style( 'sss4givewp', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-frontend.css', array(), SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION, 'all' );
         wp_enqueue_style( 'sss4givewp-socicon', 'https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh', array(), '1.0', 'all' );
 	}
 }
