@@ -22,9 +22,4 @@
     <?php if (in_array('linkedin', $settings['channels'])) : ?>
     <a class="socicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url($meta['referral']); ?>&title=Help me support <?php echo $meta['org']; ?> and donate to: <?php echo $meta['form_title']; ?>'&source=<?php echo $meta['org']; ?>" target="blank"></a>
     <?php endif; ?>
-
-    <!-- pinterest -->
-    <?php if (in_array('pinterest', $settings['channels'])) : ?>
-    <a class="socicon-pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media={{media}}&url='<?php echo esc_url($meta['referral']); ?>'&is_video=false&description='<?php echo $meta['form_title']; ?>'" target="blank"></a>
-    <?php endif; ?>
 </div>

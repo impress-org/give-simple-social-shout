@@ -68,7 +68,6 @@ class SSS_4_GiveWP_Admin_Settings extends Give_Settings_Page {
                     'fb'   => 'Facebook',
                     'twitter'  => 'Twitter',
                     'linkedin' => 'LinkedIn',
-                    'pinterest' => 'Pinterest',
                 ),
             ),
             array(

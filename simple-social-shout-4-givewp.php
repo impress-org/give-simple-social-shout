@@ -285,11 +285,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 * @access private
 	 */
 	private function load_files() {
-		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/misc-functions.php';
-
-		if ( is_admin() ) {
-			require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/admin/setting-examples.php';
-		}
+		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/main-functions.php';
 	}
 
 
