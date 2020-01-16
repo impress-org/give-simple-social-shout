@@ -47,14 +47,14 @@ class SSS_4_GiveWP_Admin_Settings extends Give_Settings_Page {
             array(
                 'name' => esc_html__( 'Social Share Title', 'sss-4-givewp' ),
                 'desc' => '',
-                'default' => __('Thank You for Your Donation!', 'sss-4-givewp'),
+                'default' => sss4givewp_get_default_setting('sss4give_title'),
                 'id'   => 'sss4give_title',
                 'type' => 'text',
             ),
             array(
                 'name' => esc_html__( 'Social Share Encouragement', 'sss-4-givewp' ),
                 'desc' => '',
-                'default' => __('We\'d love your help spreading the word on social media:', 'sss-4-givewp'),
+                'default' => sss4givewp_get_default_setting('sss4give_encouragement'),
                 'id'   => 'sss4give_encouragement',
                 'type' => 'textarea',
             ),
@@ -63,7 +63,7 @@ class SSS_4_GiveWP_Admin_Settings extends Give_Settings_Page {
                 'desc'    => '',
                 'id'      => 'sss4give_channels',
                 'type'    => 'multicheck',
-                'default' => array( 'fb', 'twitter' ),
+                'default' => sss4givewp_get_default_setting('sss4give_channels'),
                 'options' => array(
                     'fb'   => 'Facebook',
                     'twitter'  => 'Twitter',
@@ -75,7 +75,7 @@ class SSS_4_GiveWP_Admin_Settings extends Give_Settings_Page {
                 'desc'    => '',
                 'id'      => 'sss4give_position',
                 'type'    => 'radio_inline',
-                'default' => 'above',
+                'default' => sss4givewp_get_default_setting('sss4give_position'),
                 'options' => array(
                     'above' => __( 'Above the table', 'sss-4-givewp' ),
                     'below' => __( 'Below the table', 'sss-4-givewp' ),
