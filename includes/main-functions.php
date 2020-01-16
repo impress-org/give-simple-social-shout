@@ -7,7 +7,7 @@ function sss4givewp_template_args($args) {
 
     global $give_receipt_args, $donation;
 
-    
+
     $args['ID']     = $donation->ID;
     $args['form_id'] = get_post_meta( $args['ID'], '_give_payment_form_id', true );
     $args['form_meta'] = get_post_meta( $args['form_id'] );
@@ -55,4 +55,31 @@ function sss4givewp_output_sharing_below() {
     if ( $settings['position']=='below' ) {
         include get_sss4givewp_template($template);
     }
+}
+
+
+/**
+ * Return set of default setting or defaultvalue for specific option
+ *
+ * @param mixed|null $setting_name
+ *
+ * @return mixed|null
+ */
+function sss4givewp_get_default_setting( $setting_name = null ) {
+	$setting = array(
+		'sss4give_title'         => __( 'Thank You for Your Donation!', 'sss-4-givewp' ),
+		'sss4give_encouragement' => __( 'We\'d love your help spreading the word on social media:', 'sss-4-givewp' ),
+		'sss4give_channels'      => array( 'fb', 'twitter' ),
+		'sss4give_position'      => 'above',
+	);
+
+	if ( null !== $setting_name ) {
+		if ( array_key_exists( $setting_name, $setting ) ) {
+			return $setting[ $setting_name ];
+		}
+
+		return null;
+	}
+
+	return $setting;
 }
