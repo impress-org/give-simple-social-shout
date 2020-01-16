@@ -21,8 +21,15 @@ function sss4givewp_template_args($args) {
     );
 
     return $args;
+}
 
-    var_dump($settings['position']);
+function get_sss4givewp_template($template) {
+    if (locate_template('sss4givewp.php') != '') {
+        $template = get_template_directory() . '/sss4givewp.php';
+    } else {
+        $template = SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php';
+    }
+    return $template;
 }
 
 function sss4givewp_output_sharing_above() {
@@ -30,10 +37,8 @@ function sss4givewp_output_sharing_above() {
     $settings = sss4givewp_template_args($args = array())['settings'];
     $meta = sss4givewp_template_args($args = array());
 
-    //var_dump($settings);
-
     if ( $settings['position']=='above' ) {
-        include apply_filters( 'sss4givewp_template', SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php');
+        include get_sss4givewp_template($template);
     }
 }
 
@@ -42,9 +47,7 @@ function sss4givewp_output_sharing_below() {
     $settings = sss4givewp_template_args($args = array())['settings'];
     $meta = sss4givewp_template_args($args = array());
 
-    //var_dump($settings);
-
     if ( $settings['position']=='below' ) {
-        include apply_filters( 'sss4givewp_template', SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'templates/basic-template.php');
+        include get_sss4givewp_template($template);
     }
 }
