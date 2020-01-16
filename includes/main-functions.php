@@ -61,7 +61,7 @@ function sss4givewp_output_sharing_below() {
 /**
  * Return set of default setting or defaultvalue for specific option
  *
- * @param null $setting_name
+ * @param mixed|null $setting_name
  *
  * @return mixed|null
  */
@@ -81,5 +81,5 @@ function sss4givewp_get_default_setting( $setting_name = null ) {
 		return null;
 	}
 
-	return $setting_name;
+	return $setting;
 }
