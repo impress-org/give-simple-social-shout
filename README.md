@@ -2,7 +2,7 @@
 
 A GiveWP add-on that adds simple social sharing buttons to the Donation Confirmation page.
 
-![image](assets/images/sss4givewp-frontend-screenshot.png)
+![image](assets/images/screenshot-1.png)
 
 ## Description
 Let your donors share their donation experience with the world of social media. Social proof can be a powerful way to encourage more donations.
@@ -22,23 +22,16 @@ That's all you need to get up and running with this simple GiveWP add-on and sta
 
 <details><summary>Can I style the social share buttons?</summary>
 
-Of course you can use CSS, but if you want more complex customization of the appearance you can use this filter to point to your own template file.
+Of course you can use CSS, but if you want more complex customization of the appearance you can add a file into your theme's root folder called `sss4givewp.php` and that will be the output of your social sharing instead. It's best if you copy the template from the plugin to start from. The default template is found in the plugin in `/templates/basic-template.php`.
 
-```
-add_filter('sss4givewp_template', 'my_sss4givewp_template');
-
-function my_sss4givewp_template() {
-    return MY_PATH . '/my-template-file.php';
-}
-```
 </details>
 <details><summary>I want to add X social platform; will you add it?</summary>
 
-I'm keeping this really simple and not planning to do major updates, but I'll make sure it always works as intended. Use it, fork it, do what you like. I'll respond if you find bugs, for sure.
+These three platforms each support a link-based sharing that does not require javascript or authentication -- this is why they were chosen and why this add-on is called "simple". But if you want to add additional platforms and know how to implement them correctly, see the above FAQ on how you can template the output yourself.
 </details>
 
 ## Changelog
-### **2019-08 -- Version 1.0**
+**2020-01 -- Version 1.0**
 
 Launched version 1 with the following features:
 * Settings page that includes:
@@ -46,4 +39,5 @@ Launched version 1 with the following features:
     * Message
     * Channels
     * Position
-* Filter for developers to point to their own template file
+* Output is templateable
+* Per form disable option 
