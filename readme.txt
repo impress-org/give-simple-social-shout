@@ -1,5 +1,5 @@
 === Simple Social Shout for GiveWP ===
-Contributors: webdevmattcrom, givewp
+Contributors: givewp, webdevmattcrom
 Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0

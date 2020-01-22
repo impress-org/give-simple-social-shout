@@ -4,8 +4,8 @@
  * Plugin URI:  https://github.com/impress-org/give-simple-social-shout
  * Description: Add simple sharing options to your GiveWP Donation Receipt page.
  * Version:     1.0
- * Author:      Matt Cromwell
- * Author URI:  https://www.mattcromwell.com
+ * Author:      GiveWP
+ * Author URI:  https://givewp.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: sss-4-givewp
