@@ -4,7 +4,7 @@ Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: trunk
+Stable tag: 1.1
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -71,6 +71,10 @@ Otherwise, if your question is specific to "Simple Social Shout for GiveWP," we'
 3. The SSS4GiveWP settings page. 
 
 == Changelog ==
+
+**2020-05 -- Version 1.1**
+* [Swapped out socicon for SVGs for stability](https://github.com/impress-org/give-simple-social-shout/issues/10)
+* Added proper Internationalization
 
 **2020-01 -- Version 1.0**
 Launched version 1 with the following features:
