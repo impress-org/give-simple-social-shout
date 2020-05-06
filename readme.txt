@@ -3,15 +3,17 @@ Contributors: givewp, webdevmattcrom
 Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-A GiveWP add-on that adds simple social sharing buttons to the Donation Confirmation page.
+A [GiveWP](https://givewp.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=Free_Addons&utm_content=SSS4GiveWP) add-on that adds simple social sharing buttons to the Donation Confirmation page.
 
 == Description ==
+
+A [GiveWP](https://givewp.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=Free_Addons&utm_content=SSS4GiveWP) add-on that adds simple social sharing buttons to the Donation Confirmation page.
 
 Let your donors share their donation experience with the world of social media. Social proof can be a powerful way to encourage more donations.
 
@@ -27,6 +29,8 @@ This is a simple GiveWP add-on with very few options:
 You can also choose to disable the output of the social share options per form. Go to "Donations > Forms" and edit the form you'd like to disable social sharing on. On the form edit screen you'll see a "Social" tab. There you can choose "Disable". See screenshots below for a visual example. 
 
 That's all you need to get up and running with this simple GiveWP add-on and start letting your donors share their donations with the world on social media.
+
+[Learn more about this free add-on and all the free GiveWP add-ons we are creating in 2020 here](https://givewp.com/2020-the-year-of-free-givewp-add-ons/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=Free_Addons&utm_content=SSS4GiveWP).
 
 == Installation ==
 
@@ -50,6 +54,14 @@ Of course you can use CSS, but if you want more complex customization of the app
 = I want to add X social platform; will you add it? =
 
 These three platforms each support a link-based sharing that does not require javascript or authentication -- this is why they were chosen and why this add-on is called "simple". But if you want to add additional platforms and know how to implement them correctly, see the above FAQ on how you can template the output yourself.
+
+= Where can I submit Support Questions? =
+
+If you have purchased any of our Premium Add-ons, we can provide with your [Priority Support here](https://givewp.com/support?utm_source=wordpress.org&utm_medium=referral&utm_campaign=Free_Addons&utm_content=SSS4GiveWP).
+
+If you are a free GiveWP user and have a general question about GiveWP, [submit a ticket here](https://go.givewp.com/download).
+
+Otherwise, if your question is specific to "Simple Social Shout for GiveWP," we're happy to answer your questions [here](https://wordpress.org/support/plugin/simple-social-shout-for-givewp/).
 
 
 == Screenshots ==
