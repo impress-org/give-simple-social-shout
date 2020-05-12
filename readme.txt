@@ -59,9 +59,7 @@ The easiest way is with custom CSS. Put this in your Customizer "Additional CSS"
 	width: 80px;
 	height: 80px;
 	padding: 18px;
-}
-
-#sss4givewp a svg {
+}#sss4givewp a svg {
 	width: 40px;
 	height: 40px;
 }`
