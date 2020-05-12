@@ -90,7 +90,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 		// Defines addon version number for easy reference.
 		if ( ! defined( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION' ) ) {
-			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.0' );
+			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.1.1' );
 		}
 
 		// Set it to latest.
