@@ -4,7 +4,7 @@ Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.1
+Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -51,6 +51,23 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 Of course you can use CSS, but if you want more complex customization of the appearance you can add a file into your theme's root folder called `sss4givewp.php` and that will be the output of your social sharing instead. It's best if you copy the template from the plugin to start from. The default template is found in the plugin in `/templates/basic-template.php`.
 
+= How can I change the size of the icons? =
+
+The easiest way is with custom CSS. Put this in your Customizer "Additional CSS" section and you'll get icons that are twice the current size:
+
+`#sss4givewp a {
+	width: 80px;
+	height: 80px;
+	padding: 18px;
+}
+
+#sss4givewp a svg {
+	width: 40px;
+	height: 40px;
+}`
+
+Note that the `padding` of the `#sss4givewp a` rule might need minor tweaking to suit the existing styles in your site. 
+
 = I want to add X social platform; will you add it? =
 
 These three platforms each support a link-based sharing that does not require javascript or authentication -- this is why they were chosen and why this add-on is called "simple". But if you want to add additional platforms and know how to implement them correctly, see the above FAQ on how you can template the output yourself.
@@ -71,6 +88,9 @@ Otherwise, if your question is specific to "Simple Social Shout for GiveWP," we'
 3. The SSS4GiveWP settings page. 
 
 == Changelog ==
+
+**2020-05-12 -- Version 1.1.1**
+* Fixed a problem where some themes caused [icon size issues](https://github.com/impress-org/give-simple-social-shout/issues/11). 
 
 **2020-05 -- Version 1.1**
 * [Swapped out socicon for SVGs for stability](https://github.com/impress-org/give-simple-social-shout/issues/10)
