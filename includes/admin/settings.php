@@ -13,14 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @copyright   Copyright (c) 2016, WordImpress
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
-class GiveWP_PT4FB_Admin_Settings extends Give_Settings_Page {
+class SSS_4_GiveWP_Admin_Settings extends Give_Settings_Page {
 
 	/**
 	 * Give_BP_Admin_Settings constructor.
 	 */
 	function __construct() {
-		$this->id    = 'givewppt4fb-setting-fields';
-		$this->label = esc_html__( 'FB Pixel Tracking' );
+		$this->id    = 'sss4givewp-setting-fields';
+		$this->label = esc_html__( 'Social Sharing' );
 
 		$this->default_tab = 'text_fields';
 
@@ -41,29 +41,29 @@ class GiveWP_PT4FB_Admin_Settings extends Give_Settings_Page {
             array(
                 'name' => esc_html__( 'Sharing Options', 'sss-4-givewp' ),
                 'desc' => '',
-                'id'   => 'givewppt4fb_settings_header',
+                'id'   => 'sss4give_settings_header',
                 'type' => 'title',
             ),
             array(
                 'name' => esc_html__( 'Social Share Title', 'sss-4-givewp' ),
                 'desc' => '',
-                'default' =>'',
-                'id'   => 'givewppt4fb_title',
+                'default' => sss4givewp_get_default_setting('sss4give_title'),
+                'id'   => 'sss4give_title',
                 'type' => 'text',
             ),
             array(
                 'name' => esc_html__( 'Social Share Encouragement', 'sss-4-givewp' ),
                 'desc' => '',
-                'default' => '',
-                'id'   => 'givewppt4fb_encouragement',
+                'default' => sss4givewp_get_default_setting('sss4give_encouragement'),
+                'id'   => 'sss4give_encouragement',
                 'type' => 'textarea',
             ),
             array(
                 'name'    => __( 'Checkbox Field Settings', 'sss-4-givewp' ),
                 'desc'    => '',
-                'id'      => 'givewppt4fb_channels',
+                'id'      => 'sss4give_channels',
                 'type'    => 'multicheck',
-                'default' => '',
+                'default' => sss4givewp_get_default_setting('sss4give_channels'),
                 'options' => array(
                     'fb'   => 'Facebook',
                     'twitter'  => 'Twitter',
@@ -73,9 +73,9 @@ class GiveWP_PT4FB_Admin_Settings extends Give_Settings_Page {
             array(
                 'name'    => esc_html__( 'Positioning', 'sss-4-givewp' ),
                 'desc'    => '',
-                'id'      => 'givewppt4fb_position',
+                'id'      => 'sss4give_position',
                 'type'    => 'radio_inline',
-                'default' => '',
+                'default' => sss4givewp_get_default_setting('sss4give_position'),
                 'options' => array(
                     'above' => __( 'Above the table', 'sss-4-givewp' ),
                     'below' => __( 'Below the table', 'sss-4-givewp' ),
