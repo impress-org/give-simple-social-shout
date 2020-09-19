@@ -47,6 +47,37 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Frequently Asked Questions ==
 
+= How can I change the sharing message? = 
+
+There's two ways to do that:
+
+**1. Template file**
+The sharing buttons are output via template file, and the plugin FIRST checks whether you have that template in your theme. So you can override the whole template completely by creating your own template file in your theme. 
+
+Simply copy the contents of the file in this plugin at `/wp-content/plugins/give-simple-social-shout/templates/basic-template.php` and copy it into a new file in your theme that would be at `wp-content/themes/your-theme/sss4givewp.php`. 
+
+Once you've done that you can customize it however you like. The message is in line 6, it starts with `$message = `. 
+
+**BUT BE CAREFUL!!**
+
+Even small changes to the buttons can prevent them from sharing correctly. 
+
+**2. Filter**
+If you prefer to customize only the message and are familiar with PHP and how filters in WordPress work, you can do that with a PHP snippet like this:
+
+`add_filter('sss4givewp_message', 'my_custom_sss4givewp_message');
+
+function my_custom_sss4givewp_message() {
+	// Get the donation meta to output dynamic info
+	$meta = sss4givewp_template_args($args = array());
+
+	// Customize your message here
+	$message = sprintf(__('Custom FILTERED Message!! &quot;%1$s&quot; and donate to &quot;%2$s&quot;', 'sss4givewp'),$meta['org'], $meta['form_title']);
+
+	// Return the message for the filter
+	return $message;
+}`
+
 = Can I style the social share buttons? =
 
 Of course you can use CSS, but if you want more complex customization of the appearance you can add a file into your theme's root folder called `sss4givewp.php` and that will be the output of your social sharing instead. It's best if you copy the template from the plugin to start from. The default template is found in the plugin in `/templates/basic-template.php`.
