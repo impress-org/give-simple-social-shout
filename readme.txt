@@ -3,7 +3,7 @@ Contributors: webdevmattcrom, givewp
 Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0
-Tested up to: 4.8
+Tested up to: 5.7
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv3 or later
@@ -24,6 +24,11 @@ This is a simple GiveWP add-on with very few options:
 <li><strong>Position</strong><br />Choose whether to output the social share section above or below the Donation Confirmation receipt table.</li>
 </ul>
 
+<<<<<<< Updated upstream
+=======
+You can also choose to disable the output of the social share options per form. Go to "Donations > Forms" and edit the form you'd like to disable social sharing on. On the form edit screen you'll see a "Social" tab. There you can choose "Disable". See screenshots below for a visual example.
+
+>>>>>>> Stashed changes
 That's all you need to get up and running with this simple GiveWP add-on and start letting your donors share their donations with the world on social media.
 
 == Installation ==
@@ -41,6 +46,40 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Frequently Asked Questions ==
 
+<<<<<<< Updated upstream
+=======
+= How can I change the sharing message? =
+
+There's two ways to do that:
+
+**1. Template file**
+The sharing buttons are output via template file, and the plugin FIRST checks whether you have that template in your theme. So you can override the whole template completely by creating your own template file in your theme.
+
+Simply copy the contents of the file in this plugin at `/wp-content/plugins/give-simple-social-shout/templates/basic-template.php` and copy it into a new file in your theme that would be at `wp-content/themes/your-theme/sss4givewp.php`.
+
+Once you've done that you can customize it however you like. The message is in line 6, it starts with `$message = `.
+
+**BUT BE CAREFUL!!**
+
+Even small changes to the buttons can prevent them from sharing correctly.
+
+**2. Filter**
+If you prefer to customize only the message and are familiar with PHP and how filters in WordPress work, you can do that with a PHP snippet like this:
+
+`add_filter('sss4givewp_message', 'my_custom_sss4givewp_message');
+
+function my_custom_sss4givewp_message() {
+	// Get the donation meta to output dynamic info
+	$meta = sss4givewp_template_args($args = array());
+
+	// Customize your message here
+	$message = sprintf(__('Custom FILTERED Message!! &quot;%1$s&quot; and donate to &quot;%2$s&quot;', 'sss4givewp'),$meta['org'], $meta['form_title']);
+
+	// Return the message for the filter
+	return $message;
+}`
+
+>>>>>>> Stashed changes
 = Can I style the social share buttons? =
 
 Of course you can use CSS, but if you want more complex customization of the appearance you can use this filter to point to your own template file.
@@ -51,6 +90,11 @@ function my_sss4givewp_template() {
     return MY_PATH . '/my-template-file.php';
 }`
 
+<<<<<<< Updated upstream
+=======
+Note that the `padding` of the `#sss4givewp a` rule might need minor tweaking to suit the existing styles in your site.
+
+>>>>>>> Stashed changes
 = I want to add X social platform; will you add it? =
 
 I'm keeping this really simple and not planning to do major updates, but I'll make sure it always works as intended. Use it, fork it, do what you like. I'll respond if you find bugs, for sure.
@@ -58,19 +102,41 @@ I'm keeping this really simple and not planning to do major updates, but I'll ma
 
 == Screenshots ==
 
+<<<<<<< Updated upstream
 1. The settings allow for customizing the title, message (or "Encouragement"), the social channels, and the position (above or below).
 2. This is how the social sharing appears in the Storefront theme
 
 == Changelog ==
 
 **2019-08 -- Version 1.0**
+=======
+1. The Social Icons shown above the GiveWP Donation Receipt on the Twenty Twenty theme.
+2. The enable/disable setting in the form if you choose to disable social sharing for a specific form.
+3. The SSS4GiveWP settings page.
+
+== Changelog ==
+
+**2020-05-12 -- Version 1.1.1**
+* Fixed a problem where some themes caused [icon size issues](https://github.com/impress-org/give-simple-social-shout/issues/11).
+
+**2020-05 -- Version 1.1**
+* [Swapped out socicon for SVGs for stability](https://github.com/impress-org/give-simple-social-shout/issues/10)
+* Added proper Internationalization
+
+**2020-01 -- Version 1.0**
+>>>>>>> Stashed changes
 Launched version 1 with the following features:
 * Settings page that includes:
     * Title
     * Message
     * Channels
     * Position
+<<<<<<< Updated upstream
 * Filter for developers to point to their own template file
+=======
+* Output is templateable
+* Per form disable option
+>>>>>>> Stashed changes
 
 == Upgrade Notice ==
 
