@@ -21,7 +21,7 @@
 
     <!-- twitter -->
     <?php if (in_array('twitter', $settings['channels'])) : ?>
-    <a class="socicon-twitter" href="https://twitter.com/intent/tweet?status=<?php echo $message; ?>'+'<?php echo esc_url($meta['referral']); ?>" target="blank"><?php echo file_get_contents(SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . '/assets/images/twitter-logo.svg'); ?></a>
+    <a class="socicon-twitter" href="https://twitter.com/intent/tweet?text=<?php echo $message; ?>'+'<?php echo esc_url($meta['referral']); ?>" target="blank"><?php echo file_get_contents(SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . '/assets/images/twitter-logo.svg'); ?></a>
     <?php endif; ?>
 
     <!-- linkedin -->
