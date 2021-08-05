@@ -20,7 +20,7 @@ This is a simple GiveWP add-on with very few options:
 <ul>
 <li><strong>Social Share Title</strong><br />A heading above the social share buttons.</li>
 <li><strong>Social Share Encouragement</strong><br />A paragraph below the title to encourage your donors to share their donation on social media</li>
-<li><strong>Channels</strong><br />Checkbox list of the four supported social channels: Facebook, Twitter, LinkedIn, Pinterest</li>
+<li><strong>Channels</strong><br />Checkbox list of the three supported social channels: Facebook, Twitter, and LinkedIn.</li>
 <li><strong>Position</strong><br />Choose whether to output the social share section above or below the Donation Confirmation receipt table.</li>
 </ul>
 
