@@ -16,17 +16,23 @@
 
     <!-- facebook -->
     <?php if (in_array('fb', $settings['channels'])) : ?>
-    <a class="socicon-facebook" href="https://www.facebook.com/share.php?u=<?php echo urlencode($meta['referral']); ?>&quote=<?php echo $message; ?>" target="blank"></a>
+    <a class="socicon-facebook" href="https://www.facebook.com/share.php?u=<?php echo urlencode($meta['referral']); ?>&quote=<?php echo $message; ?>" target="blank">
+        <?php require SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'assets/images/facebook-logo.svg'; ?>
+    </a>
     <?php endif; ?>
 
     <!-- twitter -->
     <?php if (in_array('twitter', $settings['channels'])) : ?>
-    <a class="socicon-twitter" href="https://twitter.com/intent/tweet?status=<?php echo $message; ?>'+'<?php echo esc_url($meta['referral']); ?>" target="blank"></a>
+    <a class="socicon-twitter" href="https://twitter.com/intent/tweet?text=<?php echo $message; ?>'+'<?php echo esc_url($meta['referral']); ?>" target="blank">
+        <?php require SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'assets/images/twitter-logo.svg'; ?>
+    </a>
     <?php endif; ?>
 
     <!-- linkedin -->
     <?php if (in_array('linkedin', $settings['channels'])) : ?>
-    <a class="socicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode($meta['referral']); ?>&title=<?php echo $message; ?>'&source=<?php echo $meta['org']; ?>" target="blank"></a>
+    <a class="socicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode($meta['referral']); ?>&title=<?php echo $message; ?>'&source=<?php echo $meta['org']; ?>" target="blank">
+        <?php require SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'assets/images/linkedin-logo.svg'; ?>
+    </a>
     <?php endif; ?>
 </div>
 

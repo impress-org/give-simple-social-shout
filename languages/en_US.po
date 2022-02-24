@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Simple Social Shout for GiveWP\n"
+"POT-Creation-Date: 2020-05-05 17:51-0700\n"
+"PO-Revision-Date: 2020-05-05 17:51-0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: simple-social-shout-4-givewp.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: includes/admin/form-settings.php:30
+msgid "Social"
+msgstr ""
+
+#: includes/admin/form-settings.php:35
+msgid "Enabled/Disable"
+msgstr ""
+
+#: includes/admin/form-settings.php:37
+msgid ""
+"You can prevent the Simple Social Sharing from appearing on the Donation "
+"Confirmation page per-form by setting this to \"Disabled\"."
+msgstr ""
+
+#: includes/admin/form-settings.php:39
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin/form-settings.php:40
+msgid "Disabled"
+msgstr ""
+
+#: includes/admin/notice.php:67
+msgid ""
+"Hey, you've been using \"Simple Social Shout for GiveWP\" for a while now. "
+"We have some other free things in the GiveWP Newsletter that we think you'll "
+"love."
+msgstr ""
+
+#: includes/admin/settings.php:23
+msgid "Social Sharing"
+msgstr ""
+
+#: includes/admin/settings.php:42
+msgid "Sharing Options"
+msgstr ""
+
+#: includes/admin/settings.php:48
+msgid "Social Share Title"
+msgstr ""
+
+#: includes/admin/settings.php:55
+msgid "Social Share Encouragement"
+msgstr ""
+
+#: includes/admin/settings.php:62
+msgid "Checkbox Field Settings"
+msgstr ""
+
+#: includes/admin/settings.php:74
+msgid "Positioning"
+msgstr ""
+
+#: includes/admin/settings.php:80
+msgid "Above the table"
+msgstr ""
+
+#: includes/admin/settings.php:81
+msgid "Below the table"
+msgstr ""
+
+#: includes/main-functions.php:23
+msgid "We'd love your help spreading the word on SOCIAL MEDIA!!:"
+msgstr ""
+
+#: includes/main-functions.php:70
+msgid "Thank You for Your Donation!"
+msgstr ""
+
+#: includes/main-functions.php:71
+msgid "We'd love your help spreading the word on social media:"
+msgstr ""
+
+#: simple-social-shout-4-givewp.php:220
+#, php-format
+msgid ""
+"<strong>Activation Error:</strong> You must have the <a href=\"%s\" target="
+"\"_blank\">GiveWP</a> plugin installed and activated for Simple Social Share "
+"for GiveWP to activate."
+msgstr ""
+
+#: simple-social-shout-4-givewp.php:251
+#, php-format
+msgid ""
+"<strong>Activation Error:</strong> You must have the <a href=\"%s\" target="
+"\"_blank\">GiveWP</a> core version %s for the Simple Social Share for GiveWP "
+"add-on to activate."
+msgstr ""
+
+#: templates/basic-template.php:6
+#, php-format
+msgid "Help me support &quot;%1$s&quot; and donate to &quot;%2$s&quot;"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Simple Social Shout for GiveWP"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/impress-org/give-simple-social-shout"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add simple sharing options to your GiveWP Donation Receipt page."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "GiveWP"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://givewp.com"
+msgstr ""

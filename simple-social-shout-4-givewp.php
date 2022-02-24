@@ -3,20 +3,13 @@
  * Plugin Name: Simple Social Shout for GiveWP
  * Plugin URI:  https://github.com/impress-org/give-simple-social-shout
  * Description: Add simple sharing options to your GiveWP Donation Receipt page.
- * Version:     1.0
- * Author:      Matt Cromwell
- * Author URI:  https://www.mattcromwell.com
+ * Version:     1.1.1
+ * Author:      GiveWP
+ * Author URI:  https://givewp.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: sss-4-givewp
+ * Text Domain: sss4givewp
  *
- *
- * Hattip to the following online resources:
- * 1. This Codepen on doing the social links with pure HTML/CSS:
- * https://codepen.io/asheabbott/pen/GoMrzW
- *
- * 2. Socicon for the really easy social icon library with brand colors too:
- * http://www.socicon.com
  */
 
 
@@ -80,6 +73,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 		add_action( 'admin_init', array( $this, 'check_environment' ), 999 );
 		add_action( 'admin_notices', array( $this, 'admin_notices' ), 15 );
 		add_action( 'wp_enqueue_scripts', array($this, 'load_styles') );
+		add_action( 'admin_enqueue_scripts', array($this, 'load_admin_styles') );
 		add_filter( 'give-settings_get_settings_pages', array( $this, 'register_setting_page' ) );
 	}
 
@@ -96,7 +90,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 		// Defines addon version number for easy reference.
 		if ( ! defined( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION' ) ) {
-			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.0' );
+			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.1.1' );
 		}
 
 		// Set it to latest.
@@ -141,6 +135,17 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 		}
 
 		$this->store_default_settings();
+
+		// Number of days you want the notice delayed by.
+		$delayindays = 15;
+
+		// Create timestamp for when plugin was activated.
+		$triggerdate = mktime( 0, 0, 0, date('m')  , date('d') + $delayindays, date('Y') );
+
+		// If our option doesn't exist already, we'll create it with today's timestamp.
+		if ( ! get_option( 'sss4givewp_activation_date' ) ) {
+			add_option( 'sss4givewp_activation_date', $triggerdate, '', 'yes' );
+		}
 	}
 
 	/**
@@ -155,14 +160,38 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 */
 	public function init( $give ) {
 
-		load_plugin_textdomain( 'sss-4-givewp', false, dirname( SIMPLE_SOCIAL_SHARE_4_GIVEWP_BASENAME ) . '/languages' );
-
 		// Don't hook anything else in the plugin if we're in an incompatible environment.
 		if ( ! $this->get_environment_warning() ) {
 			return;
 		}
 
+		$this->load_textdomain();
+
 		self::$instance->load_files();
+	}
+
+	/**
+	 * Loads the plugin language files.
+	 *
+	 * @since  1.0
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function load_textdomain()
+	{
+
+		// Set filter for Give's languages directory
+		$give_lang_dir = dirname(plugin_basename(SIMPLE_SOCIAL_SHARE_4_GIVEWP_FILE)) . '/languages/';
+		$give_lang_dir = apply_filters('sss4givewp_languages_directory', $give_lang_dir);
+
+		// Traditional WordPress plugin locale filter.
+		$locale = is_admin() && function_exists('get_user_locale') ? get_user_locale() : get_locale();
+		$locale = apply_filters('plugin_locale', $locale, 'sss4givewp');
+
+		unload_textdomain('sss4givewp');
+		load_textdomain('sss4givewp', WP_LANG_DIR . '/givewp-donation-widgets-for-elementor/' . $locale . '.mo');
+		load_plugin_textdomain('sss4givewp', false, $give_lang_dir);
 	}
 
 
@@ -288,7 +317,10 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 */
 	private function load_files() {
 		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/main-functions.php';
+
 		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/admin/form-settings.php';
+
+		require_once SIMPLE_SOCIAL_SHARE_4_GIVEWP_DIR . 'includes/admin/notice.php';
 	}
 
 
@@ -299,9 +331,19 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 	 * @access private
 	 */
 	public function load_styles() {
-        wp_enqueue_style( 'sss4givewp', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-frontend.css', array(), SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION, 'all' );
-        wp_enqueue_style( 'sss4givewp-socicon', 'https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh', array(), '1.0', 'all' );
+		wp_enqueue_style( 'sss4givewp', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-frontend.css', array(), SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION, 'all' );
 	}
+
+	/**
+	 * Setup hooks
+	 *
+	 * @since
+	 * @access private
+	 */
+	public function load_admin_styles() {
+        wp_enqueue_style( 'sss4givewp-admin', SIMPLE_SOCIAL_SHARE_4_GIVEWP_URL . 'assets/sss4givewp-admin.css', array(), SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION, 'all' );
+	}
+
 
 
 	/**
