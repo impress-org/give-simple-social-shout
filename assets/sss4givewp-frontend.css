@@ -11,7 +11,7 @@
     width: 40px;
     height: 40px;
     line-height: 0;
-    display: inline-block;
+    display: inline-flex;
     margin: 8px;
     border-radius: 50%;
     font-size: 1.5rem;
@@ -20,6 +20,8 @@
     transition: opacity 0.15s linear;
     text-decoration: none;
     padding: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 #sss4givewp a svg {
