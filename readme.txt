@@ -3,7 +3,7 @@ Contributors: givewp, webdevmattcrom
 Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
 Requires at least: 4.0
-Tested up to: 5.4
+Tested up to: 5.9
 Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv3 or later
@@ -22,11 +22,11 @@ This is a simple GiveWP add-on with very few options:
 <ul>
 <li><strong>Social Share Title</strong><br />A heading above the social share buttons.</li>
 <li><strong>Social Share Encouragement</strong><br />A paragraph below the title to encourage your donors to share their donation on social media</li>
-<li><strong>Channels</strong><br />Checkbox list of the four supported social channels: Facebook, Twitter, and LinkedIn</li>
+<li><strong>Channels</strong><br />Checkbox list of the three supported social channels: Facebook, Twitter, and LinkedIn.</li>
 <li><strong>Position</strong><br />Choose whether to output the social share section above or below the Donation Confirmation receipt table.</li>
 </ul>
 
-You can also choose to disable the output of the social share options per form. Go to "Donations > Forms" and edit the form you'd like to disable social sharing on. On the form edit screen you'll see a "Social" tab. There you can choose "Disable". See screenshots below for a visual example. 
+You can also choose to disable the output of the social share options per form. Go to "Donations > Forms" and edit the form you'd like to disable social sharing on. On the form edit screen you'll see a "Social" tab. There you can choose "Disable". See screenshots below for a visual example.
 
 That's all you need to get up and running with this simple GiveWP add-on and start letting your donors share their donations with the world on social media.
 
@@ -47,20 +47,20 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Frequently Asked Questions ==
 
-= How can I change the sharing message? = 
+= How can I change the sharing message? =
 
 There's two ways to do that:
 
 **1. Template file**
-The sharing buttons are output via template file, and the plugin FIRST checks whether you have that template in your theme. So you can override the whole template completely by creating your own template file in your theme. 
+The sharing buttons are output via template file, and the plugin FIRST checks whether you have that template in your theme. So you can override the whole template completely by creating your own template file in your theme.
 
-Simply copy the contents of the file in this plugin at `/wp-content/plugins/give-simple-social-shout/templates/basic-template.php` and copy it into a new file in your theme that would be at `wp-content/themes/your-theme/sss4givewp.php`. 
+Simply copy the contents of the file in this plugin at `/wp-content/plugins/give-simple-social-shout/templates/basic-template.php` and copy it into a new file in your theme that would be at `wp-content/themes/your-theme/sss4givewp.php`.
 
-Once you've done that you can customize it however you like. The message is in line 6, it starts with `$message = `. 
+Once you've done that you can customize it however you like. The message is in line 6, it starts with `$message = `.
 
 **BUT BE CAREFUL!!**
 
-Even small changes to the buttons can prevent them from sharing correctly. 
+Even small changes to the buttons can prevent them from sharing correctly.
 
 **2. Filter**
 If you prefer to customize only the message and are familiar with PHP and how filters in WordPress work, you can do that with a PHP snippet like this:
@@ -95,7 +95,7 @@ The easiest way is with custom CSS. Put this in your Customizer "Additional CSS"
 	height: 40px;
 }`
 
-Note that the `padding` of the `#sss4givewp a` rule might need minor tweaking to suit the existing styles in your site. 
+Note that the `padding` of the `#sss4givewp a` rule might need minor tweaking to suit the existing styles in your site.
 
 = I want to add X social platform; will you add it? =
 
@@ -114,12 +114,12 @@ Otherwise, if your question is specific to "Simple Social Shout for GiveWP," we'
 
 1. The Social Icons shown above the GiveWP Donation Receipt on the Twenty Twenty theme.
 2. The enable/disable setting in the form if you choose to disable social sharing for a specific form.
-3. The SSS4GiveWP settings page. 
+3. The SSS4GiveWP settings page.
 
 == Changelog ==
 
 **2020-05-12 -- Version 1.1.1**
-* Fixed a problem where some themes caused [icon size issues](https://github.com/impress-org/give-simple-social-shout/issues/11). 
+* Fixed a problem where some themes caused [icon size issues](https://github.com/impress-org/give-simple-social-shout/issues/11).
 
 **2020-05 -- Version 1.1**
 * [Swapped out socicon for SVGs for stability](https://github.com/impress-org/give-simple-social-shout/issues/10)
@@ -133,7 +133,7 @@ Launched version 1 with the following features:
     * Channels
     * Position
 * Output is templateable
-* Per form disable option 
+* Per form disable option
 
 == Upgrade Notice ==
 
