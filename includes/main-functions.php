@@ -28,7 +28,7 @@ function sss4givewp_template_args($args) {
     return $args;
 }
 
-function get_sss4givewp_template($template) {
+function get_sss4givewp_template() {
     if (locate_template('sss4givewp.php') != '') {
         $template = get_template_directory() . '/sss4givewp.php';
     } else {
@@ -43,7 +43,7 @@ function sss4givewp_output_sharing_above() {
     $meta = sss4givewp_template_args($args = array());
 
     if ( $settings['position']=='above' ) {
-        include get_sss4givewp_template($template);
+        include get_sss4givewp_template();
     }
 }
 
