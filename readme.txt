@@ -2,9 +2,9 @@
 Contributors: givewp, webdevmattcrom
 Donate link: https://givewp.com
 Tags: givewp, donation, social share, social sharing, facebook, twitter, linkedin, pinterest,
-Requires at least: 4.0
+Requires at least: 4.9
 Tested up to: 5.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -117,6 +117,10 @@ Otherwise, if your question is specific to "Simple Social Shout for GiveWP," we'
 3. The SSS4GiveWP settings page.
 
 == Changelog ==
+**2022-03-25 -- Version 1.1.2**
+* Fix: Icons sometimes didn't show up due to server prevent allow_url_fopen, and this is no longer a problem
+* Fix: Corrected the Twitter share URL so it's working again
+* Fix: Icons properly center again
 
 **2020-05-12 -- Version 1.1.1**
 * Fixed a problem where some themes caused [icon size issues](https://github.com/impress-org/give-simple-social-shout/issues/11).

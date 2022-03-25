@@ -3,13 +3,12 @@
  * Plugin Name: Simple Social Shout for GiveWP
  * Plugin URI:  https://github.com/impress-org/give-simple-social-shout
  * Description: Add simple sharing options to your GiveWP Donation Receipt page.
- * Version:     1.1.1
+ * Version:     1.1.2
  * Author:      GiveWP
  * Author URI:  https://givewp.com
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: sss4givewp
- *
  */
 
 
@@ -90,7 +89,7 @@ final class SIMPLE_SOCIAL_SHARE_4_GIVEWP {
 
 		// Defines addon version number for easy reference.
 		if ( ! defined( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION' ) ) {
-			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.1.1' );
+			define( 'SIMPLE_SOCIAL_SHARE_4_GIVEWP_VERSION', '1.1.2' );
 		}
 
 		// Set it to latest.
