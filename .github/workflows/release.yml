@@ -1,4 +1,4 @@
-name: Release to GiveWP.com
+name: Release to WordPress.org
 
 on:
     release:
